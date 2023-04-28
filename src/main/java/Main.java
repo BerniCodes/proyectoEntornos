@@ -21,25 +21,10 @@ public class Main {
             scanner.nextLine();
             switch (opcion) {
                 case 1 -> {
-                    System.out.print("Nombre del producto: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Precio del producto: ");
-                    double precio = scanner.nextDouble();
-                    scanner.nextLine();
-                    Producto producto = new Producto(nombre, precio);
-                    productos.add(producto);
-                    System.out.println("Producto añadido correctamente");
+                    AnadirProducto();
                 }
                 case 2 -> {
-                    System.out.print("Índice del producto a borrar: ");
-                    indice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (indice < 0 || indice >= productos.size()) {
-                        System.out.println("Índice no válido");
-                    } else {
-                        productos.remove(indice);
-                        System.out.println("Producto borrado correctamente");
-                    }
+                    BorrarProducto();
                 }
                 case 3 -> {
                     System.out.print("Índice del producto a modificar: ");
@@ -77,5 +62,28 @@ public class Main {
                 default -> System.out.println("Opción no válida");
             }
         } while (opcion != 5);
+    }
+
+    public void AnadirProducto() {
+        System.out.print("Nombre del producto: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Precio del producto: ");
+        double precio = scanner.nextDouble();
+        scanner.nextLine();
+        Producto producto = new Producto(nombre, precio);
+        productos.add(producto);
+        System.out.println("Producto añadido correctamente");
+    }
+
+    public void BorrarProducto() {
+        System.out.print("Índice del producto a borrar: ");
+        indice = scanner.nextInt();
+        scanner.nextLine();
+        if (indice < 0 || indice >= productos.size()) {
+            System.out.println("Índice no válido");
+        } else {
+            productos.remove(indice);
+            System.out.println("Producto borrado correctamente");
+        }
     }
 }
